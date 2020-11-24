@@ -4,6 +4,7 @@ from datetime import datetime
 from django.utils.translation import ugettext_lazy as _
 import logging
 import logging.handlers
+import colog
 import io
 
 # Django settings for tapiriik project.
@@ -59,6 +60,11 @@ logging_console_handler = logging.StreamHandler(io.TextIOWrapper(sys.stdout.buff
 logging_console_handler.setLevel(logging.INFO)
 logging_console_handler.setFormatter(logging.Formatter('%(asctime)s|%(levelname)s\t|%(message)s |%(funcName)s in %(filename)s:%(lineno)d','%Y-%m-%d %H:%M:%S'))
 _GLOBAL_LOGGER.addHandler(logging_console_handler)
+
+# Adding colog as a setting var (like _GLOBAL_LOGGER)
+# Quite usefull because pretty all files tend to import those settings mostly for the logger.
+COLOG = colog
+_GLOBAL_LOGGER.info(COLOG.yellow("Initializing log colorization"))
 
 SITE_ID = 1
 
