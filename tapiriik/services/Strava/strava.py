@@ -235,7 +235,12 @@ class StravaService(ServiceBase):
 
     def ExternalIDsForPartialSyncTrigger(self, req):
         data = json.loads(req.body.decode("UTF-8"))
-        return [data["owner_id"]]
+        # We check if its an activity and if it is not in uploaded activities to avoid redundant trigger
+        if "create" == data["aspect_type"] and "activity" == data["object_type"]:
+            isAlreadyKnown = db.uploaded_activities.find_one({"ExternalID" : {"$eq": data["object_id"]}})
+            if isAlreadyKnown == None:
+                return [data["owner_id"]]
+        return []
 
     def PartialSyncTriggerGET(self, req):
         # Strava requires this endpoint to echo back a challenge.
