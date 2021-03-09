@@ -58,7 +58,6 @@ class StravaService(ServiceBase):
         ActivityType.StrengthTraining: "WeightTraining",
         ActivityType.Climbing: "RockClimbing",
         ActivityType.StandUpPaddling: "StandUpPaddling",
-        ActivityType.Yoga: "Yoga"
     }
 
     # For mapping Strava->common
@@ -87,7 +86,6 @@ class StravaService(ServiceBase):
         "RollerSki": ActivityType.RollerSkiing,
         "WeightTraining": ActivityType.StrengthTraining,
         "RockClimbing" : ActivityType.Climbing,
-        "Yoga" : ActivityType.Yoga
     }
 
     SupportedActivities = list(_activityTypeMappings.keys())
