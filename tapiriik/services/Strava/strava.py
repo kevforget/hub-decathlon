@@ -153,10 +153,7 @@ class StravaService(ServiceBase):
     def RevokeAuthorization(self, serviceRecord):
         resp = self._requestWithAuth(lambda session: session.post("https://www.strava.com/oauth/deauthorize"), serviceRecord)
         if resp.status_code != 204 and resp.status_code != 200:
-            if resp.status_code == 429:
-                logger.warning("Rate limit exeception %s - %s" % (resp.status_code, resp.text))
-            else:
-                raise APIException("Unable to deauthorize Strava auth token, status " + str(resp.status_code) + " resp " + resp.text)
+            raise APIException("Unable to deauthorize Strava auth token, status " + str(resp.status_code) + " resp " + resp.text)
 
     def DownloadActivityList(self, svcRecord, exhaustive=False):
         activities = []
