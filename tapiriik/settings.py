@@ -262,6 +262,12 @@ WEBPACK_LOADER = {
         }
 }
 
+DATABASES = {
+    "default": { 
+        "ENGINE": "django.db.backends.sqlite3"
+    }
+}
+
 MONGO_HOST_API = "localhost"
 MONGO_REPLICA_SET = None
 MONGO_CLIENT_OPTIONS = {}
