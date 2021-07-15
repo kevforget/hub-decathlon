@@ -262,8 +262,6 @@ WEBPACK_LOADER = {
         }
 }
 
-TEST_RUNNER = 'tapiriik.testing.MongoDBTestRunner'
-
 MONGO_HOST_API = "localhost"
 MONGO_REPLICA_SET = None
 MONGO_CLIENT_OPTIONS = {}
