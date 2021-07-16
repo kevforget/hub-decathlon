@@ -794,7 +794,8 @@ class FITIO:
 			for wp in lap.Waypoints:
 				wp.Timestamp = wp.Timestamp.replace(tzinfo=pytz.utc)
 
-
+		
+		activity.AdjustTZ()
 		activity.CheckSanity()
 
 		return activity
